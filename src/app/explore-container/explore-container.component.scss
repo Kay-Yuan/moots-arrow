@@ -25,3 +25,10 @@
 #container a {
   text-decoration: none;
 }
+
+#arrow-container {
+  position: absolute;
+  right: calc(12.5vw - 30px);
+  width:60px;
+
+}
