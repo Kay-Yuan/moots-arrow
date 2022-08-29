@@ -11,7 +11,11 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
-
-  <app-arrow-box [id]="'test1'" [x]="20" [y]="20"></app-arrow-box>
+  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+  <!-- <ion-button (click)="onClick()"></ion-button> -->
+  <app-arrow-box
+    [id]="'test1'"
+    [isExpanded]="isExpanded"
+    [direction]="'down'"
+  ></app-arrow-box>
 </ion-content>
