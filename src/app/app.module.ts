@@ -7,6 +7,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ArrowsService } from './arrows.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +17,10 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     BrowserAnimationsModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    ArrowsService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

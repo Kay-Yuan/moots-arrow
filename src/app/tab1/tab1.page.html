@@ -10,12 +10,10 @@
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
-  <!-- <ion-button (click)="onClick()"></ion-button> -->
-  <app-arrow-box
-    [id]="'test1'"
-    [isExpanded]="isExpanded"
-    [direction]="'up'"
-  ></app-arrow-box>
 </ion-content>
+<span #target1 id="test2"> Click Me </span>
+
+<app-arrow-popper
+  [id]="'popper1'"
+  [targetId]="'trigger-button'"
+></app-arrow-popper>

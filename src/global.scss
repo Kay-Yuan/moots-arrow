@@ -24,3 +24,30 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+.popover {
+    --backdrop-opacity: 0.5;
+    --box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.6);
+    --color: white;
+    --max-width: 100px;
+    --max-height: 80px;
+    // --offset-x: ;
+    // --offset-y: -30px;
+    &::part(arrow) {
+        --background: blue;
+    }
+    &::part(content) {
+        font-weight: 600;
+        padding: 5px;
+        // overflow: hidden;
+        // overflow: auto;
+  // &::-webkit-scrollbar {
+  //   display: none;
+  // }
+    }
+    // &::part(backdrop) {
+    //     display: none;
+    // }
+  }
+

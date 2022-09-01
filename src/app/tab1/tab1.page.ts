@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ArrowsService } from '../arrows.service';
 
 @Component({
   selector: 'app-tab1',
@@ -7,9 +8,8 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
   isExpanded = true;
-  // direction = 'down';
 
-  constructor() {}
+  constructor(private arrowService: ArrowsService) {}
 
   onClick() {
     this.isExpanded = !this.isExpanded;

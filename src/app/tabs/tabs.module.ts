@@ -6,14 +6,11 @@ import { FormsModule } from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs-routing.module';
 
 import { TabsPage } from './tabs.page';
+import { ArrowsService } from '../arrows.service';
 
 @NgModule({
-  imports: [
-    IonicModule,
-    CommonModule,
-    FormsModule,
-    TabsPageRoutingModule
-  ],
-  declarations: [TabsPage]
+  imports: [IonicModule, CommonModule, FormsModule, TabsPageRoutingModule],
+  declarations: [TabsPage],
+  providers: [ArrowsService],
 })
 export class TabsPageModule {}

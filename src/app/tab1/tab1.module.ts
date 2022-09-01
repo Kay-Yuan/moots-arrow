@@ -7,6 +7,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { ArrowBoxComponent } from '../arrow-box/arrow-box.component';
+import { ArrowPopperComponent } from '../arrow-popper/arrow-popper.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { ArrowBoxComponent } from '../arrow-box/arrow-box.component';
     ExploreContainerComponentModule,
     Tab1PageRoutingModule,
   ],
-  declarations: [Tab1Page, ArrowBoxComponent],
+  declarations: [Tab1Page, ArrowBoxComponent, ArrowPopperComponent],
 })
 export class Tab1PageModule {}
