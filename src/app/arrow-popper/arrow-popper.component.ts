@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, AfterViewChecked } from '@angular/core';
 import { createPopper } from '@popperjs/core';
 
 @Component({
@@ -6,8 +6,7 @@ import { createPopper } from '@popperjs/core';
   templateUrl: './arrow-popper.component.html',
   styleUrls: ['./arrow-popper.component.scss'],
 })
-export class ArrowPopperComponent implements OnInit {
-  // The hint to display
+export class ArrowPopperComponent implements AfterViewChecked {
   @Input() id: string;
   @Input() targetId: string;
   @Input() hide = false;
@@ -16,8 +15,8 @@ export class ArrowPopperComponent implements OnInit {
 
   constructor() {}
 
-  async ngOnInit() {
-    await setTimeout(() => {
+  ngAfterViewChecked() {
+    setTimeout(() => {
       const tooltip = document.querySelector(`#${this.id}`) as HTMLElement;
       // const tooltip = document.querySelector('#popper1') as HTMLElement;
       createPopper(
@@ -37,7 +36,6 @@ export class ArrowPopperComponent implements OnInit {
           ],
         }
       );
-      this.hide = false;
-    }, 150);
+    }, 100);
   }
 }
