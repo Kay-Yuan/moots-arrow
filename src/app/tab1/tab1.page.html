@@ -11,15 +11,21 @@
     </ion-toolbar>
   </ion-header>
 </ion-content>
-<span #target1 id="test2"> Click Me </span>
-
-<!-- <app-arrow-popper [id]="'popper1'" [target]="target1"></app-arrow-popper> -->
+<div #target1 id="test2">Click Me</div>
 
 <app-arrow-floating-ui
   [id]="'popper1'"
   [targetId]="'test2'"
+  [textPlacement]="'bottom-end'"
+  [arrowDirection]="'top'"
+  [tabPage]="'tab1'"
+  *ngIf="isPlatformReady"
+  (arrowCreated)="arrowCreated($event)"
 ></app-arrow-floating-ui>
 <app-arrow-floating-ui
   [id]="'popper2'"
   [targetId]="'trigger-button'"
+  [tabPage]="'tab1'"
+  *ngIf="isPlatformReady"
+  (arrowCreated)="arrowCreated($event)"
 ></app-arrow-floating-ui>

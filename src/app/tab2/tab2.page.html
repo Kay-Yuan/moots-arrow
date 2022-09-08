@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title> Tab 2 </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,6 +10,19 @@
       <ion-title size="large">Tab 2</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
 </ion-content>
+
+<span #target1 id="tab2-span"> Click Me </span>
+
+<app-arrow-floating-ui
+  [id]="'popper3'"
+  [targetId]="'tab2-span'"
+  [textPlacement]="'top'"
+  [arrowDirection]="'bottom'"
+  [tabPage]="'tab2'"
+></app-arrow-floating-ui>
+<app-arrow-floating-ui
+  [id]="'popper4'"
+  [targetId]="'trigger-button'"
+  [tabPage]="'tab2'"
+></app-arrow-floating-ui>

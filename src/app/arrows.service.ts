@@ -1,31 +1,43 @@
 import { Injectable } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
-import { PositionAlign, PositionSide } from '@ionic/core';
+import arrowCreate, { DIRECTION, HEAD, IArrow, Anchor } from 'arrows-svg';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArrowsService {
-  constructor(private popoverController: PopoverController) {}
+  constructor() {}
 
-  async presentPopover(
-    e: Event,
-    componentProps: any,
-    side?: PositionSide,
-    alignment?: PositionAlign
-  ) {
-    const popover = await this.popoverController.create({
-      component: componentProps,
-      event: e,
-      cssClass: 'popover',
-      side: side ? side : 'bottom',
-      alignment: alignment ? alignment : undefined,
-      // backdropDismiss: false,
-      // showBackdrop: false,
+  addArrow(
+    fromNode: HTMLElement,
+    toNode: HTMLElement,
+    arrowDirection: DIRECTION
+  ): IArrow {
+    return arrowCreate({
+      className: 'arrow-test',
+      from: {
+        direction:
+          arrowDirection.split('-')[0] === 'bottom'
+            ? DIRECTION.BOTTOM
+            : DIRECTION.RIGHT,
+        node: fromNode,
+        translation:
+          arrowDirection.split('-')[0] === 'bottom' ? [0.7, 0] : [0.4, 0],
+      },
+      to: {
+        direction:
+          arrowDirection.split('-')[0] === 'bottom'
+            ? DIRECTION.TOP
+            : DIRECTION.BOTTOM,
+        node: toNode,
+        translation:
+          arrowDirection.split('-')[0] === 'bottom' ? [0, 0] : [0, 0.5],
+      },
+      head: {
+        func: HEAD.NORMAL,
+        size: 13, // custom options that will be passed to head function
+        // distance: 1,
+      },
+      updateDelay: 0,
     });
-
-    await popover.present();
-
-    const { role } = await popover.onDidDismiss();
   }
 }

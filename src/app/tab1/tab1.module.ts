@@ -6,9 +6,7 @@ import { Tab1Page } from './tab1.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
-import { ArrowBoxComponent } from '../arrow-box/arrow-box.component';
-import { ArrowPopperComponent } from '../arrow-popper/arrow-popper.component';
-import { ArrowFloatingUiComponent } from '../arrow-floating-ui/arrow-floating-ui.component';
+import { ArrowFloatingUiMoudle } from '../arrow-floating-ui/arrow-floating-ui.moudle';
 
 @NgModule({
   imports: [
@@ -17,12 +15,8 @@ import { ArrowFloatingUiComponent } from '../arrow-floating-ui/arrow-floating-ui
     FormsModule,
     ExploreContainerComponentModule,
     Tab1PageRoutingModule,
+    ArrowFloatingUiMoudle,
   ],
-  declarations: [
-    Tab1Page,
-    ArrowBoxComponent,
-    ArrowPopperComponent,
-    ArrowFloatingUiComponent,
-  ],
+  declarations: [Tab1Page],
 })
 export class Tab1PageModule {}

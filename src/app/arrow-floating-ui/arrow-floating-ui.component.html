@@ -1,11 +1,13 @@
-<div
-  [id]="id"
-  class="tooltip"
-  role="tooltip"
-  [ngStyle]="{
-    visibility: hide ? 'hidden' : 'visible'
-  }"
->
-  <p>arrow-floating works!</p>
-  <div [id]="id + '-arrow'" class="arrow" data-popper-arrow></div>
+<div [id]="id" class="tooltip" role="tooltip">
+  <span
+    >arrow-floating works!arrow-floating works!arrow-floating
+    works!arrow-floating works!</span
+  >
+  <!-- <svg [id]="id + '-arrow'" class="arrow-test">
+    <path class="arrow-test__path" [ngStyle]="{ d: pathD }"></path>
+    <polygon
+      class="arrow-head"
+      [ngStyle]="{ points: '0,0 50,0 ' + peakX + ',' + peakY }"
+    ></polygon>
+  </svg> -->
 </div>

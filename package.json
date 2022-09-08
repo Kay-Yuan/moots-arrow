@@ -33,6 +33,7 @@
     "@ionic/angular": "^6.2.4",
     "@ionic/core": "^6.2.4",
     "@popperjs/core": "^2.11.6",
+    "arrows-svg": "^1.5.6",
     "cocoapods": "^0.0.0",
     "popperjs-core-ionic-scroll-fix": "^2.4.1",
     "rxjs": "~6.6.0",

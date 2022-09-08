@@ -7,6 +7,7 @@ import { Tab2Page } from './tab2.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
+import { ArrowFloatingUiMoudle } from '../arrow-floating-ui/arrow-floating-ui.moudle';
 
 @NgModule({
   imports: [
@@ -14,8 +15,9 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab2PageRoutingModule
+    Tab2PageRoutingModule,
+    ArrowFloatingUiMoudle,
   ],
-  declarations: [Tab2Page]
+  declarations: [Tab2Page],
 })
 export class Tab2PageModule {}

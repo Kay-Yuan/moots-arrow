@@ -51,3 +51,21 @@
     // }
   }
 
+  // arrow config
+.arrow-test {
+  pointer-events: none;
+  overflow: visible !important;
+}
+
+.arrow-test__path {
+  stroke: var(--ion-color-primary);
+  fill: transparent;
+  // stroke-dasharray: 4 2;
+  stroke-width: 3.5;
+}
+
+.arrow-test__head {
+  fill: var(--ion-color-primary);
+  stroke: var(--ion-color-primary);
+  stroke-width: 3.5;
+}
