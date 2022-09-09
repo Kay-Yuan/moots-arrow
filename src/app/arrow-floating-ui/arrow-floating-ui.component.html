@@ -1,8 +1,10 @@
-<div [id]="id" class="tooltip" role="tooltip">
-  <span
-    >arrow-floating works!arrow-floating works!arrow-floating
-    works!arrow-floating works!</span
-  >
+<div
+  [id]="id"
+  class="tooltip"
+  role="tooltip"
+  [ngStyle]="{ 'text-align': arrowStart === 'right' ? 'end' : 'justify' }"
+>
+  {{ text ? text : "Assign events to a category and share it with others" }}
   <!-- <svg [id]="id + '-arrow'" class="arrow-test">
     <path class="arrow-test__path" [ngStyle]="{ d: pathD }"></path>
     <polygon

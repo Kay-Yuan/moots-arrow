@@ -16,16 +16,20 @@
 <app-arrow-floating-ui
   [id]="'popper1'"
   [targetId]="'test2'"
-  [textPlacement]="'bottom-end'"
-  [arrowDirection]="'top'"
+  [textPlacement]="'right-start'"
+  [arrowStart]="'left'"
+  [arrowEnd]="'bottom'"
   [tabPage]="'tab1'"
   *ngIf="isPlatformReady"
   (arrowCreated)="arrowCreated($event)"
 ></app-arrow-floating-ui>
-<app-arrow-floating-ui
+<!-- <app-arrow-floating-ui
   [id]="'popper2'"
   [targetId]="'trigger-button'"
   [tabPage]="'tab1'"
+  [textPlacement]="'top-end'"
+  [arrowStart]="'right'"
+  [arrowEnd]="'top'"
   *ngIf="isPlatformReady"
   (arrowCreated)="arrowCreated($event)"
-></app-arrow-floating-ui>
+></app-arrow-floating-ui> -->

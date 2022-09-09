@@ -1,36 +1,43 @@
 import { Injectable } from '@angular/core';
 import arrowCreate, { DIRECTION, HEAD, IArrow, Anchor } from 'arrows-svg';
 
+type TranslationArray = { x: number; y: number };
 @Injectable({
   providedIn: 'root',
 })
 export class ArrowsService {
-  constructor() {}
+  private startDirection = new Map<DIRECTION, TranslationArray>();
+  private endDirection = new Map<DIRECTION, TranslationArray>();
+
+  constructor() {
+    this.startDirection.set(DIRECTION.RIGHT, { x: 0, y: 0 });
+    this.startDirection.set(DIRECTION.LEFT, { x: 0, y: 0 });
+    this.startDirection.set(DIRECTION.TOP, { x: 0, y: 0 });
+    this.startDirection.set(DIRECTION.BOTTOM, { x: 0.15, y: 0.5 });
+
+    this.endDirection.set(DIRECTION.TOP, { x: 0, y: -1 });
+    this.endDirection.set(DIRECTION.BOTTOM, { x: 0, y: 1 });
+  }
 
   addArrow(
     fromNode: HTMLElement,
     toNode: HTMLElement,
-    arrowDirection: DIRECTION
+    arrowStart: DIRECTION,
+    arrowEnd: DIRECTION
   ): IArrow {
+    const startTranslation = this.startDirection.get(arrowStart.split('-')[0]);
+    const endTranslation = this.endDirection.get(arrowEnd.split('-')[0]);
     return arrowCreate({
       className: 'arrow-test',
       from: {
-        direction:
-          arrowDirection.split('-')[0] === 'bottom'
-            ? DIRECTION.BOTTOM
-            : DIRECTION.RIGHT,
+        direction: arrowStart,
         node: fromNode,
-        translation:
-          arrowDirection.split('-')[0] === 'bottom' ? [0.7, 0] : [0.4, 0],
+        translation: [startTranslation.x, startTranslation.y],
       },
       to: {
-        direction:
-          arrowDirection.split('-')[0] === 'bottom'
-            ? DIRECTION.TOP
-            : DIRECTION.BOTTOM,
+        direction: arrowEnd,
         node: toNode,
-        translation:
-          arrowDirection.split('-')[0] === 'bottom' ? [0, 0] : [0, 0.5],
+        translation: [endTranslation.x, endTranslation.y],
       },
       head: {
         func: HEAD.NORMAL,

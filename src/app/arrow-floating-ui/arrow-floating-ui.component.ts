@@ -43,17 +43,17 @@ export class ArrowFloatingUiComponent implements AfterViewInit, OnDestroy {
   @Input() id: string;
   @Input() targetId: string;
   @Input() tabPage: string;
+  @Input() text: string;
+  @Input() alignmentAxisOffset = 40;
+  @Input() mainAxisOffset = 40;
   @Input() arrowActive = true;
   @Input() isPageReady = true;
   @Input() target: HTMLElement;
   @Input() textPlacement: Placement = 'top';
   @Input() arrowDirection: Direction = 'bottom';
+  @Input() arrowStart: Direction = 'bottom';
+  @Input() arrowEnd: Direction = 'top';
   @Output() arrowCreated = new EventEmitter<IArrow>();
-  // pointStart = { x: 0, y: 0 };
-  // pointEnd = { x: 400, y: 400 };
-  // pathD: string;
-  // peakX = 200;
-  // peakY = 200;
   private tooltip: HTMLElement;
   private cleanup: any;
   private arrowElement: HTMLElement;
@@ -82,10 +82,12 @@ export class ArrowFloatingUiComponent implements AfterViewInit, OnDestroy {
           computePosition(this.target, this.tooltip, {
             placement: this.textPlacement,
             middleware: [
-              offset(60),
-              // inline(),
-              flip(),
-              shift({ padding: 5 }),
+              offset({
+                alignmentAxis: this.alignmentAxisOffset,
+                mainAxis: this.mainAxisOffset,
+              }),
+              // flip(),
+              shift({ padding: 50 }),
               // arrow({ element: this.arrowElement }),
             ],
           }).then(({ x, y, placement, middlewareData }) => {
@@ -122,7 +124,8 @@ export class ArrowFloatingUiComponent implements AfterViewInit, OnDestroy {
       const arrowT = this.arrows.addArrow(
         this.tooltip,
         this.target,
-        this.arrowDirection
+        this.arrowStart,
+        this.arrowEnd
       );
       document
         .getElementsByTagName(`app-${this.tabPage}`)[0]
