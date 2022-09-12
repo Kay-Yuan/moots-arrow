@@ -12,4 +12,8 @@ export class Tab3Page {
   ionViewDidEnter() {
     this.helperService.addHelp('tab3-content', 'example1', 'Help Text');
   }
+
+  ionViewDidLeave() {
+    this.helperService.clear();
+  }
 }
