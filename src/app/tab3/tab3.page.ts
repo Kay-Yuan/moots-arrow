@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HelperService } from '../helper.service';
 
 @Component({
   selector: 'app-tab3',
@@ -6,12 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['tab3.page.scss'],
 })
 export class Tab3Page {
-  constructor() {}
+  constructor(private helperService: HelperService) {}
 
   ionViewDidEnter() {
-    const element: HTMLElement = document.getElementById(
-      'trigger-button'
-    ) as HTMLElement;
-    element.click();
+    this.helperService.addHelp('tab3-content', 'example1', 'Help Text');
   }
 }
