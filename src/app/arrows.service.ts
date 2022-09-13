@@ -6,9 +6,6 @@ type TranslationArray = { a: number; b: number; c: number; d: number };
   providedIn: 'root',
 })
 export class ArrowsService {
-  private startDirection = new Map<DIRECTION, TranslationArray>();
-  private endDirection = new Map<DIRECTION, TranslationArray>();
-
   private translationArray = new Map<string, TranslationArray>();
 
   constructor() {
