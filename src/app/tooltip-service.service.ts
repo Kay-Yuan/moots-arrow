@@ -2,8 +2,6 @@ import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import {
   autoUpdate,
   computePosition,
-  flip,
-  limitShift,
   offset,
   Placement,
   shift,
@@ -36,7 +34,7 @@ export class TooltipService {
     private rendererFactory: RendererFactory2,
     private arrowService: ArrowsService
   ) {
-    this.renderer = rendererFactory.createRenderer(null, null);
+    this.renderer = this.rendererFactory.createRenderer(null, null);
     this.arrowsDirection.set('top-end', {
       start: DIRECTION.RIGHT,
       end: DIRECTION.TOP,
