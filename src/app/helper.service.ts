@@ -16,7 +16,10 @@ export class HelperService {
 
   private elements = new Set<HelpData>();
 
-  constructor(private rendererFactory: RendererFactory2, private arrowService: ArrowsService) {
+  constructor(
+    private rendererFactory: RendererFactory2,
+    private arrowService: ArrowsService
+  ) {
     this.renderer = rendererFactory.createRenderer(null, null);
   }
 
@@ -29,20 +32,28 @@ export class HelperService {
     tooltipBox.style.marginLeft = '60px';
     tooltipBox.style.marginTop = '120px';
 
-
     this.renderer.appendChild(parentNode, tooltipBox);
 
     const targetNode: HTMLElement = document.querySelector(`#${targetId}`);
 
-    const arrow = this.arrowService.addArrow(tooltipBox, targetNode, 'top-end', 'bottom-end');
+    const arrow = this.arrowService.addArrow(
+      tooltipBox,
+      targetNode,
+      'right',
+      'bottom'
+    );
 
     this.renderer.appendChild(parentNode, arrow.node);
 
-    this.elements.add({parent: parentNode, text: tooltipBox, arrow: arrow.node});
+    this.elements.add({
+      parent: parentNode,
+      text: tooltipBox,
+      arrow: arrow.node,
+    });
   }
 
   clear() {
-    this.elements.forEach(elem => {
+    this.elements.forEach((elem) => {
       this.renderer.removeChild(elem.parent, elem.text);
       this.renderer.removeChild(elem.parent, elem.arrow);
     });

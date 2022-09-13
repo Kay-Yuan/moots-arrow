@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" #parent2 id="tab2-content">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 2</ion-title>
@@ -14,7 +14,7 @@
 
 <span #target1 id="tab2-span"> Click Me </span>
 
-<app-arrow-floating-ui
+<!-- <app-arrow-floating-ui
   [id]="'popper3'"
   [targetId]="'tab2-span'"
   [textPlacement]="'top-end'"
@@ -31,4 +31,4 @@
   [arrowStart]="'right'"
   [arrowEnd]="'top'"
   [mainAxisOffset]="60"
-></app-arrow-floating-ui>
+></app-arrow-floating-ui> -->

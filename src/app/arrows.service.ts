@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import arrowCreate, { DIRECTION, HEAD, IArrow, Anchor } from 'arrows-svg';
 
-type TranslationArray = { x: number; y: number };
+type TranslationArray = { a: number; b: number; c: number; d: number };
+type ArrowDirection = { start: string; end: string };
 @Injectable({
   providedIn: 'root',
 })
@@ -9,14 +10,57 @@ export class ArrowsService {
   private startDirection = new Map<DIRECTION, TranslationArray>();
   private endDirection = new Map<DIRECTION, TranslationArray>();
 
-  constructor() {
-    this.startDirection.set(DIRECTION.RIGHT, { x: 0, y: 0 });
-    this.startDirection.set(DIRECTION.LEFT, { x: 0, y: 0 });
-    this.startDirection.set(DIRECTION.TOP, { x: 0, y: 0 });
-    this.startDirection.set(DIRECTION.BOTTOM, { x: 0.15, y: 0.5 });
+  private translationArray = new Map<string, TranslationArray>();
 
-    this.endDirection.set(DIRECTION.TOP, { x: 0, y: -1 });
-    this.endDirection.set(DIRECTION.BOTTOM, { x: 0, y: 1 });
+  constructor() {
+    this.translationArray.set(`${DIRECTION.RIGHT}-${DIRECTION.TOP}`, {
+      a: 0,
+      b: 0,
+      c: 0,
+      d: -1,
+    });
+    this.translationArray.set(`${DIRECTION.LEFT}-${DIRECTION.TOP}`, {
+      a: 0,
+      b: 0,
+      c: 0,
+      d: -1,
+    });
+    this.translationArray.set(`${DIRECTION.TOP}-${DIRECTION.BOTTOM}`, {
+      a: 0,
+      b: 0,
+      c: 0,
+      d: 1,
+    });
+    this.translationArray.set(`${DIRECTION.RIGHT}-${DIRECTION.BOTTOM}`, {
+      a: 0,
+      b: 0,
+      c: 0,
+      d: 1,
+    });
+    this.translationArray.set(`${DIRECTION.LEFT}-${DIRECTION.BOTTOM}`, {
+      a: 0,
+      b: 0,
+      c: 0,
+      d: 1,
+    });
+    this.translationArray.set(`${DIRECTION.RIGHT}-${DIRECTION.LEFT}`, {
+      a: 0,
+      b: 0,
+      c: -1,
+      d: 0,
+    });
+    this.translationArray.set(`${DIRECTION.LEFT}-${DIRECTION.RIGHT}`, {
+      a: 0,
+      b: 0,
+      c: 1,
+      d: 0,
+    });
+    this.translationArray.set(`${DIRECTION.BOTTOM}-${DIRECTION.TOP}`, {
+      a: 0,
+      b: 0,
+      c: 0,
+      d: -1,
+    });
   }
 
   addArrow(
@@ -25,19 +69,19 @@ export class ArrowsService {
     arrowStart: DIRECTION,
     arrowEnd: DIRECTION
   ): IArrow {
-    const startTranslation = this.startDirection.get(arrowStart.split('-')[0]);
-    const endTranslation = this.endDirection.get(arrowEnd.split('-')[0]);
+    const translation = this.translationArray.get(`${arrowStart}-${arrowEnd}`);
+
     return arrowCreate({
       className: 'arrow-test',
       from: {
         direction: arrowStart,
         node: fromNode,
-        translation: [startTranslation.x, startTranslation.y],
+        translation: [translation.a, translation.b],
       },
       to: {
         direction: arrowEnd,
         node: toNode,
-        translation: [endTranslation.x, endTranslation.y],
+        translation: [translation.c, translation.d],
       },
       head: {
         func: HEAD.NORMAL,

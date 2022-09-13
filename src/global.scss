@@ -69,3 +69,21 @@
   stroke: var(--ion-color-primary);
   stroke-width: 3.5;
 }
+
+.tooltip {
+  position: absolute;
+  // background: #222;
+  color: var(--ion-color-primary);
+  font-weight: 600;
+  font-stretch:ultra-condensed;
+  padding:0 2px;
+  border-radius: 4px;
+  // font-size: 90%;
+  pointer-events: none;
+  max-width: 100px;
+  min-width: 30px;
+  // top: 0;
+  // left: 0;
+  text-align: justify;
+
+}

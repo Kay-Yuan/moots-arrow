@@ -20,6 +20,8 @@ export class Tab1Page {
   }
 
   ionViewDidEnter() {
+    console.log('ionViewDidEnter');
+    console.log(document.querySelector(`#test2`).getBoundingClientRect());
     // add arrow
     setTimeout(() => {
       this.arrows?.forEach((arrow) => {

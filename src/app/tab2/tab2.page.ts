@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TooltipService } from '../tooltip-service.service';
 
 @Component({
   selector: 'app-tab2',
@@ -6,12 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page {
-  constructor() {}
+  constructor(private tooltipService: TooltipService) {}
 
   ionViewDidEnter() {
-    const element: HTMLElement = document.getElementById(
-      'trigger-button'
-    ) as HTMLElement;
-    element.click();
+    this.tooltipService.addTooltip(
+      'tab2-content',
+      'tab2-span',
+      'hello world!',
+      'top-start'
+    );
+  }
+
+  ionViewDidLeave() {
+    this.tooltipService.clearAll();
   }
 }
